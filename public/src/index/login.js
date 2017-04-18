@@ -1,7 +1,7 @@
 //登录功能
 define(['jquery','cookie'], function($){
     // 要将
-      $("#loginForm").on("submit",function(){
+         $("#loginForm").on("submit",function(){
         var  formData=$(this).serialize();
         
         $.ajax({
