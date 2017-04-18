@@ -21,6 +21,7 @@ define(['jquery','cookie'], function($){
                       
 
                 }
+                
             }
 
         });
