@@ -1,4 +1,4 @@
-define(['jquery','cookie'], function($){
+define(['jquery', 'template', 'cookie'], function($, template){
     // 检测用户是否登录，如果没有登录则跳转至登录页
 
     // 如何检测用户是否登录了呢？
@@ -24,12 +24,35 @@ define(['jquery','cookie'], function($){
     if(document.cookie.indexOf('PHPSESSID') == -1 && location.pathname != '/login') {
         location.href = '/login';
     }
-      console.log($.cookie);
-      console.log(loginfo);
+      // console.log($.cookie);
+      // console.log(loginfo);
     // 获取用户的登录信息(被记录在了cookie中)
     var loginfo = $.cookie('loginfo') && JSON.parse($.cookie('loginfo'));
 
+   
+     //template方法传递两个参数
+     //第一个参数是模板所在DOM标签的ID
+     //第二个参数是模板所需要的数据（对象类型）
+     //template（"tpl","data"）;
+     
+      // compile方法也需要两个参数
+    // 第一个参数是字符串形式的模板
+    // 第二个参数是配置选项可以省略
+    // var tpl = '<h1><%= name %></h1>';
+    // var data = {name: '小明'};
     // console.log(loginfo);
+    
+    // // 定义模板
+      var source =  '<div class="avatar img-circle">\
+                    <img src="<%= tc_avatar %>">\
+                </div>\
+                <h4><%= tc_name %></h4>',
+    //编译模板
+       render=template.compile(source),
+     //传递数据
+        html=render(loginfo );
+     //将拼凑好数据的html添加至DOM
+     $(".aside .profile").append(html);
     // 退出登录
     $("#logout").on("click",function(){
     	$.ajax({

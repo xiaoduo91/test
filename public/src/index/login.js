@@ -18,8 +18,6 @@ define(['jquery','cookie'], function($){
                         $.cookie('loginfo', JSON.stringify(info.result));
                         location.href ='/';
 
-                      
-
                 }
                 
             }
