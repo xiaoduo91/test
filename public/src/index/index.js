@@ -1,4 +1,4 @@
 
-define(['jquery', "../untils"],function($, untils){
-   untils.setMenu();
+define(['jquery', "../utils"],function($, utils){
+   utils.setMenu();
 })
